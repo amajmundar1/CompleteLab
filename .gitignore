@@ -1,0 +1,11 @@
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+*.exe
+*.a
+test
+lab
+Makefile
+lib/
+bin/
+.vscode/
