@@ -54,10 +54,10 @@ int main (){
         Op* op5 = new Op(-5.3);
         Op* op9 = new Op(9.8);
         Mult* M = new Mult(op2, op5);
-        Sub* S = new Sub(op9, op5);
-        Add* A = new Add(op2, op9);
+        //Sub* S = new Sub(op9, op5);
+        //Add* A = new Add(op2, op9);
         Div* D = new Div(op5, op2);
-        Pow* P = new Pow(op9, op2);
+        //Pow* P = new Pow(op9, op2);
 	Mult* TreeM = new Mult(M, D);
 	Add* TreeA = new Add(TreeM, op2); 
 	//DummyRoot* root2 = new DummyRoot(TreeA);
@@ -74,18 +74,18 @@ int main (){
 	cout << endl << endl;
 
 	cout << "All counted nodes: " << endl << endl;
-	cout << visitor->op_count() << endl; 
-	cout << visitor->rand_count() << endl;
-	cout << visitor->add_count() << endl;
-	cout << visitor->mult_count() << endl;
-	cout << visitor->sub_count() << endl;
-	cout << visitor->div_count() << endl;
-	cout << visitor->pow_count() << endl;
-	cout << visitor->ceil_count() << endl;
-	cout << visitor->floor_count() << endl;
-	cout << visitor->abs_count() << endl;
-	cout << visitor->trunc_count() << endl;
-	cout << visitor->paren_count() << endl;
+	cout << "Op count: " << visitor->op_count() << endl; 
+	cout << "Rand count: " << visitor->rand_count() << endl;
+	cout << "Add count: " << visitor->add_count() << endl;
+	cout << "Mult count: " << visitor->mult_count() << endl;
+	cout << "Sub count: " << visitor->sub_count() << endl;
+	cout << "Div count: " << visitor->div_count() << endl;
+	cout << "Pow count: " << visitor->pow_count() << endl;
+	cout << "Ceil count: " << visitor->ceil_count() << endl;
+	cout << "Floor count: " << visitor->floor_count() << endl;
+	cout << "Abs count: " << visitor->abs_count() << endl;
+	cout << "Trunc count: " << visitor->trunc_count() << endl;
+	cout << "Paren count: " << visitor->paren_count() << endl;
 
 	
 	
