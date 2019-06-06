@@ -19,6 +19,9 @@
 #include "base.hpp"
 
 #include "./Iterator/iterator.h"
+
+#include "visitor.hpp"
+
 #include "base_factory.hpp"
 #include "./AbstractFactorySubs/Sci.h"
 #include "./AbstractFactorySubs/Precision.h"
@@ -45,7 +48,8 @@ int main (){
 		cout << endl;
 	} 
 */
-
+	
+	
 	Op* op2 = new Op(-6.9);
         Op* op5 = new Op(-5.3);
         Op* op9 = new Op(9.8);
@@ -57,14 +61,34 @@ int main (){
 	Mult* TreeM = new Mult(M, D);
 	Add* TreeA = new Add(TreeM, op2); 
 	//DummyRoot* root2 = new DummyRoot(TreeA);
+	CountVisitor* visitor = new CountVisitor(TreeA);
 
-	cout << "Pre-order Iteration" << endl;
+	cout << endl << endl;
+	cout << "Pre-order Iteration" << endl << endl;
 	PreOrderIterator* secondItr = new PreOrderIterator(TreeA);
 	for ( secondItr->first(); !secondItr->is_done(); secondItr->next() ){
                 cout << secondItr->current()->stringify();
+		secondItr->current()->accept(visitor);
                 cout << endl;
         }	
+	cout << endl << endl;
 
+	cout << "All counted nodes: " << endl << endl;
+	cout << visitor->op_count() << endl; 
+	cout << visitor->rand_count() << endl;
+	cout << visitor->add_count() << endl;
+	cout << visitor->mult_count() << endl;
+	cout << visitor->sub_count() << endl;
+	cout << visitor->div_count() << endl;
+	cout << visitor->pow_count() << endl;
+	cout << visitor->ceil_count() << endl;
+	cout << visitor->floor_count() << endl;
+	cout << visitor->abs_count() << endl;
+	cout << visitor->trunc_count() << endl;
+	cout << visitor->paren_count() << endl;
+
+	
+	
 	
         return 0;
 

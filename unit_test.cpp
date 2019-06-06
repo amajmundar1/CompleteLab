@@ -22,7 +22,7 @@
 #include "./AbstractFactorySubs/Sci.h"
 #include "./AbstractFactorySubs/StdDouble.h"
 
-#include 
+#include "visitor.hpp" 
 
 #include "base.hpp"
 #include <string>

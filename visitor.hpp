@@ -1,6 +1,10 @@
 #ifndef __COUNT_VISITOR_HPP__
 #define __COUNT_VISITOR_HPP__
 
+#include "base.hpp"
+
+class Base;
+
 class CountVisitor{
     private:
         int opss;
@@ -17,9 +21,10 @@ class CountVisitor{
         int trunc;
         int paren;
 
+	Base* theRoot;
     public:
         CountVisitor(){ }
-
+	CountVisitor(Base* root) { theRoot = root; }
         void visit_op(){ opss++; }
         int op_count(){ return opss; }
         void visit_rand(){ rands++; }
