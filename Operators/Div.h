@@ -16,7 +16,7 @@ class Div : public Operator {
 
                 double evaluate();
                 string stringify();
-
+		void accept(CountVisitor* visit) { visit->visit_div(); }
 
 };
 

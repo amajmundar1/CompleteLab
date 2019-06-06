@@ -17,6 +17,7 @@ class Add : public Operator {
 
                 double evaluate();
                 std::string stringify();
+		void accept(CountVisitor* visit) { visit->visit_add(); }
 };
 
 #endif

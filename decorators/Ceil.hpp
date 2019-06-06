@@ -31,6 +31,8 @@ class Ceil : public Base {
 			return ceil(childPtr->evaluate());
 		};
 		string stringify() {};
+		void accept(CountVisitor* visit) { visit->visit_ceil(); }
+
 
 };
 

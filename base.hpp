@@ -4,12 +4,14 @@
 #include <string>
 #include <iostream>
 #include "./Iterator/iterator.h"
+#include "visitor.hpp"
 //#include "./Iterator/BinaryIterator.cpp"
 //#include "./Iterator/UnaryIterator.cpp"
 
 using namespace std;
 
 class Iterator;
+class CountVisitor;
 //class BinaryIterator;
 //class UnaryIterator;
 //class NullIterator;
@@ -25,6 +27,7 @@ class Base {
 	virtual Base* get_left() = 0;
 	virtual Base* get_right() = 0;
 	virtual Iterator* create_iterator() = 0;
+	virtual void accept(CountVisitor* visit) = 0;
 
 };
 /*

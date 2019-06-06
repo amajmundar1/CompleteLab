@@ -25,4 +25,5 @@ class Operator : public Base
 		{
 			return new BinaryIterator(this);
 		}
+		void accept(CountVisitor* visit) { }
 };

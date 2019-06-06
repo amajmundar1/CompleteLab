@@ -29,6 +29,8 @@ class Abs : public Base {
                         return fabs(childPtr->evaluate());
                 };
 		string stringify() {};
+		void accept(CountVisitor* visit) { visit->visit_abs(); }
+
 
 };
 

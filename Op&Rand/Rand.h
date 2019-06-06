@@ -5,6 +5,7 @@
 #include <random>
 #include "../base.hpp"
 #include "../Iterator/iterator.h"
+#include "../visitor.hpp"
 #include <string>
 
 class Rand : public Base {
@@ -23,6 +24,7 @@ class Rand : public Base {
         	Iterator* create_iterator(){
 			return new NullIterator(this);
 		}
+		void accept(CountVisitor* visit) { visit->visit_rand(); }
 
 
 };

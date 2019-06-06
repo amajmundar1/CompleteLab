@@ -5,6 +5,7 @@
 #include <random>
 #include "../base.hpp"
 #include "../Iterator/iterator.h"
+#include "../visitor.hpp"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ public:
 	Iterator* create_iterator(){
 		return new NullIterator(this);
 	}
+	void accept(CountVisitor* visit) { visit->visit_op(); }
 
 };
 

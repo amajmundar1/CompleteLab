@@ -16,6 +16,8 @@ public:
 
         double evaluate();
         string stringify();
+	void accept(CountVisitor* visit) { visit->visit_sub(); }
+
 };
 
 #endif

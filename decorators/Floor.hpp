@@ -30,6 +30,8 @@ class Floor : public Base {
                         return floor(childPtr->evaluate());
                 };
 		string stringify() {};
+		void accept(CountVisitor* visit) { visit->visit_floor(); }
+
 
 };
 

@@ -12,4 +12,6 @@ public:
     Paren(Base* input);
     double evaluate() {};
     string stringify();
+    void accept(CountVisitor* visit) { visit->visit_paren(); }
+
 };
