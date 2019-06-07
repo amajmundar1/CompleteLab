@@ -22,6 +22,7 @@
 #include "./AbstractFactorySubs/Sci.h"
 #include "./AbstractFactorySubs/StdDouble.h"
 
+#include "./Iterator/iterator.h"
 #include "visitor.hpp" 
 
 #include "base.hpp"
@@ -33,100 +34,58 @@ using namespace std;
 
 #include "gtest/gtest.h"
 
-TEST(PreciseTestSet, PreciseOpTest)
+
+TEST(VisitorTestSet, AddTest)
 {
-    PrecisionOp* seven = new PrecisionOp(345.456320976);
-    EXPECT_EQ(seven->stringify(), "345.46");
-}
-TEST(PreciseTestSet, PreciseRandTest) {
-	PrecisionRand* randomVal = new PrecisionRand();
-	ostringstream OS;
-	OS << setprecision(2);
-	OS << std::fixed;
-	OS << randomVal->evaluate();
-	EXPECT_EQ(randomVal->stringify(), OS.str());
+
+	Op* op2 = new Op(-6.9);
+        Op* op5 = new Op(-5.3);
+        Add* A = new Add(op2, op5);
+	CountVisitor* visitor = new CountVisitor(A);
+	A->accept(visitor);
+	EXPECT_EQ(visitor->add_count(), 1);
 }
 
-TEST(SciTestSet, SciOpTest)
+
+TEST(VisitorTestSet, SubTest)
 {
-	double testVal = 70000000000000000;
-	SciOp* test = new SciOp(testVal);
-	ostringstream Test;
-	Test << scientific;
-	Test << testVal;
-	EXPECT_EQ(test->stringify(), Test.str());
+	Op* seven = new Op(7);
+	Op* four = new Op(4);
+	Sub* sub = new Sub(seven, four);
+	CountVisitor* visitor = new CountVisitor(sub);
+	sub->accept(visitor);
+	EXPECT_EQ(visitor->sub_count(), 1);
 }
 
-TEST(SciTestSet, SciRandTest)
+TEST(VisitorTestSet, DivTest)
 {
-	SciRand* test = new SciRand();
-	ostringstream Test;
-	Test << scientific;
-	Test << test->evaluate();
-	EXPECT_EQ(test->stringify(), Test.str());
+	Op* seven = new Op(7);
+	Op* four = new Op(4);
+	Div* div = new Div(seven, four);
+	CountVisitor* visitor = new CountVisitor(div);
+	div->accept(visitor);
+	EXPECT_EQ(visitor->div_count(), 1);
 }
-//TEST(AbstractPreciseTestSet, PreciseOpTest){
-	
 
-TEST(AbstractSciTestSet, SciOpFactoryTest)
+TEST(VisitorTestSet, MultTest)
 {
-	double testVal = 70000000000000000;
-	BaseFactory* test = new Sci;
-	Op* op = test->createOp(testVal);
-	ostringstream Test;
-        Test << scientific;
-        Test << testVal;
-        EXPECT_EQ(op->stringify(), Test.str());
+	Op* seven = new Op(7);
+	Op* four = new Op(4);
+	Mult* mult = new Mult(seven, four);
+	CountVisitor* visitor = new CountVisitor(mult);
+	mult->accept(visitor);
+	EXPECT_EQ(visitor->mult_count(), 1);
 }
 
-TEST(AbstractSciTestSet, SciRandFactoryTest)
+TEST(VisitorTestSet, OpTest)
 {
-	BaseFactory* test = new Sci;
-	Rand* rand = test->createRand();
-	ostringstream Test;
-        Test << scientific;
-        Test << rand->evaluate();
-        EXPECT_EQ(rand->stringify(), Test.str());
+	Op* seven = new Op(7);
+	Op* four = new Op(4);
+	Add* add = new Add(seven, four);
+	CountVisitor* visitor = new CountVisitor(add);
+	add->accept(visitor);
+	EXPECT_EQ(visitor->op_count(), 2);
 }
-TEST(AbstractStdTestSet, StdOpFactoryTest) {
-	double testVal = 70.00076986;
-	BaseFactory* test = new StdDouble;
-	Op* op = test->createOp(testVal);
-	ostringstream Test;
-	Test << std::fixed;
-	Test << testVal;
-	EXPECT_EQ(op->stringify(), Test.str());
-}
-TEST(AbstractStdTestSet, StdRandFactoryTest) {
-        BaseFactory* test = new StdDouble;
-        Rand* rand = test->createRand();
-        ostringstream Test;
-	Test << std::fixed;
-        Test << rand->evaluate();
-        EXPECT_EQ(rand->stringify(), Test.str());
-}
-TEST(AbstractPrecisionTestSet, PrecisionOpFactoryTest) {
-	double testVal = 70.678584;
-	BaseFactory* test = new Precision;
-	Op* op = test->createOp(testVal);
-	ostringstream Test;
-	Test << std::fixed;
-	Test << setprecision(2);
-	Test << testVal;
-	EXPECT_EQ(op->stringify(), Test.str());
-}
-TEST(AbstractPrecisionTestSet, PrecisionRandFactoryTest) {
-        BaseFactory* test = new Precision;
-        Rand* rand = test->createRand();
-        ostringstream Test;
-        Test << std::fixed;
-        Test << setprecision(2);
-        Test << rand->evaluate();
-        EXPECT_EQ(rand->stringify(), Test.str());
-}
-
-	
-
 
 int main() {
   ::testing::InitGoogleTest();

@@ -28,39 +28,15 @@
 #include "./AbstractFactorySubs/StdDouble.h"
 
 
-int main (){
-	
-/*	
-        Op* op2 = new Op(-2.7);
-        Op* op5 = new Op(-5.2);
-        Op* op9 = new Op(9.9);
-        Mult* M = new Mult(op2, op5);
-        Sub* S = new Sub(op9, op5);
-        Add* A = new Add(op2, op9);
-        Div* D = new Div(op5, op2);
-        Pow* P = new Pow(op9, op2);
-	DummyRoot* root = new DummyRoot(D);
-        
-	cout << "Pre-order Iteration" << endl;
-	PreOrderIterator* theItr = new PreOrderIterator(root);
-	for ( theItr->first(); !theItr->is_done(); theItr->next() ){
-		cout << theItr->current()->stringify();
-		cout << endl;
-	} 
-*/
-	
-	
+int main ()
+{	
 	Op* op2 = new Op(-6.9);
         Op* op5 = new Op(-5.3);
         Op* op9 = new Op(9.8);
         Mult* M = new Mult(op2, op5);
-        //Sub* S = new Sub(op9, op5);
-        //Add* A = new Add(op2, op9);
         Div* D = new Div(op5, op2);
-        //Pow* P = new Pow(op9, op2);
 	Mult* TreeM = new Mult(M, D);
 	Add* TreeA = new Add(TreeM, op2); 
-	//DummyRoot* root2 = new DummyRoot(TreeA);
 	CountVisitor* visitor = new CountVisitor(TreeA);
 
 	cout << endl << endl;
