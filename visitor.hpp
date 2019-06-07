@@ -23,10 +23,36 @@ class CountVisitor{
 
 	Base* theRoot;
     public:
-        CountVisitor(){ }
+        CountVisitor()
+	{
+		opss = 0;
+		rands = 0;
+		divs = 0;
+		add = 0;
+		sub = 0;
+		pow = 0;
+		ceil = 0;
+		floor = 0;
+		abs = 0;
+		trunc = 0;
+		paren = 0;
+		mults = 0;
+       	}
 	CountVisitor(Base* root) 
 	{ 
 		theRoot = root; 
+		opss = 0;
+		rands = 0;
+		divs = 0;
+		add = 0;
+		sub = 0;
+		pow = 0;
+		ceil = 0;
+		floor = 0;
+		abs = 0;
+		trunc = 0;
+		paren = 0;
+		mults = 0;
 	}
         void visit_op()
 	{ 
@@ -45,8 +71,8 @@ class CountVisitor{
 		return rands; 
 	}
         void visit_mult()
-	{  
-		mults++; 
+	{
+		mults++;
 	}
         int mult_count()
 	{ 

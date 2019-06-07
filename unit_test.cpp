@@ -81,9 +81,9 @@ TEST(VisitorTestSet, OpTest)
 {
 	Op* seven = new Op(7);
 	Op* four = new Op(4);
-	Add* add = new Add(seven, four);
-	CountVisitor* visitor = new CountVisitor(add);
-	add->accept(visitor);
+	CountVisitor* visitor = new CountVisitor();
+	seven->accept(visitor);
+	four->accept(visitor);
 	EXPECT_EQ(visitor->op_count(), 2);
 }
 
